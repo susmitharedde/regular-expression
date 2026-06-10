@@ -1,0 +1,38 @@
+import re
+
+# Function to validate email
+def validate_email(email):
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return bool(re.match(pattern, email))
+
+# Function to validate phone number
+def validate_phone(phone):
+    pattern = r'^[6-9]\d{9}$'
+    return bool(re.match(pattern, phone))
+
+# User Input
+email = input("Enter Email ID: ")
+phone = input("Enter Phone Number: ")
+
+# Email Validation
+if validate_email(email):
+    print("✓ Valid Email")
+else:
+    print("✗ Invalid Email")
+
+# Phone Validation
+if validate_phone(phone):
+    print("✓ Valid Phone Number")
+else:
+    print("✗ Invalid Phone Number")
+
+# Demonstration of re.search() vs re.match()
+text = "My phone number is 9876543210"
+
+print("\nDifference between re.match() and re.search():")
+
+match_result = re.match(r'\d+', text)
+search_result = re.search(r'\d+', text)
+
+print("re.match():", match_result)
+print("re.search():", search_result.group() if search_result else None)
